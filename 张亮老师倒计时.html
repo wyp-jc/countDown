@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<style>
+*{
+	margin:0;
+	padding:0;
+}
+body{
+	background : black;
+	color: gold;
+	font-size: 50px;
+}
+#box{
+	width: 600px;
+	height: 400px;
+	margin: 200px auto;
+}
+
+	</style>
+</head>
+<body>
+	
+
+	<div id="box"></div>	
+	<script>
+		
+
+		function addZero(i){
+			if(i<10){
+				return "0"+i;
+			}else{
+				return i;
+			}
+		}
+
+		function dTime(y,m,d){
+			var nowTime = +new Date()//变时间戳
+			,	stopTime = +new Date(y,m,d)
+			,	timer = stopTime - nowTime;
+			//一天等于24小时，每个小时60分，每分钟60秒，每秒是1000毫秒
+			var day = parseInt(timer/1000/60/60/24) 
+			,	hours = parseInt(timer/1000/60/60%24) 
+			,	minutes = parseInt(timer/1000/60%60)
+			,	seconds = parseInt(timer/1000%60);
+			
+			document.getElementById("box").innerHTML =
+			 addZero(day) + "天"
+			 +addZero(hours)+"小时"
+			 +addZero(minutes)+"分钟"
+			 +addZero(seconds)+"秒";
+
+		}
+		
+		dTime(2017,0,18)
+
+		setInterval("dTime(2017,0,18)",1000);
+		
+
+	</script>
+</body>
+</html>
